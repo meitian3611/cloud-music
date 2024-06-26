@@ -5,7 +5,7 @@
 
 <template>
   <div class="top-header">
-    顶部公共导航1ss
+    顶部公共导航文案
   </div>
 </template>
 
