@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  font-family:
+    PingFang SC,
+    Arial,
+    Microsoft YaHei,
+    sans-serif;
+  color: var(--t-text-color);
+  background-color: var(--t-container-background);
+}
+a {
+  text-decoration: none;
+  color: var(--color-text-main);
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  border: none;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+*,
+*:focus,
+*:hover,
+input {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--t-light-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--t-muted-color);
+}
+
+#app,
+.el-container {
+  width: 100vw;
+  height: 100%;
+}
