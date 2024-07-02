@@ -10,6 +10,7 @@ import topHeader from '@components/common/top-header.vue'
 </template>
 
 <style scoped lang="scss">
-.cloud-home-container {
-}
+// .cloud-home-container {
+
+// }
 </style>

@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 
-import topHook from './top-hook' // 将代码逻辑给抽离，方便维护
-const { data, listNavClick, subListClick } = topHook() // 引入hook逻辑并调用
+import topHook from './top-hook' // 将导航栏代码逻辑给抽离，方便维护
+const { data, listNavClick, subListClick } = topHook() // 引入导航栏hook逻辑并调用
+
+// 搜索输入框-默认文字，点击后清空
+let inputTextInfo = '音乐/视频/电台/用户'
+let inputText = ref<string>(inputTextInfo)
+
+//
 </script>
 
 <template>
@@ -23,11 +29,21 @@ const { data, listNavClick, subListClick } = topHook() // 引入hook逻辑并调
           </span>
         </li>
       </ul>
-      <div class="nav-search"></div>
+      <div class="nav-search">
+        <div class="search-box">
+          <input
+            type="text"
+            @focus="inputText = ''"
+            @blur="inputText = inputTextInfo"
+            class="search-input"
+            :placeholder="inputText"
+          />
+        </div>
+      </div>
       <div class="user-info"></div>
     </div>
-    <div class="top-sub">
-      <div class="subnav">
+    <div class="top-sub" :class="data.listIndex > 0 ? 'subLine' : ''">
+      <div class="subnav" v-show="data.listIndex === 0">
         <ul class="subnav-content">
           <li v-for="(item, index) in data.subList" :key="index">
             <a
@@ -48,7 +64,7 @@ const { data, listNavClick, subListClick } = topHook() // 引入hook逻辑并调
 <style scoped lang="scss">
 .top-header {
   box-sizing: border-box;
-//   border-bottom: 1px solid #000;
+  //   border-bottom: 1px solid #000;
   width: 100%;
   background-color: #242424;
   &-content {
@@ -102,7 +118,8 @@ const { data, listNavClick, subListClick } = topHook() // 引入hook逻辑并调
         .coricon {
           position: absolute;
           bottom: 0px;
-          right: 50%;
+          left: 50%;
+          transform: translate(-50%, 0);
           width: 12px;
           height: 7px;
           background: url(https://s2.music.126.net/style/web2/img/frame/topbar.png?e52adade1f4df5e242dac8537a78c78e);
@@ -110,10 +127,32 @@ const { data, listNavClick, subListClick } = topHook() // 引入hook逻辑并调
         }
       }
     }
+    .nav-search {
+      float: left;
+      margin-top: 20px;
+      .search-box {
+        position: relative;
+        .search-input {
+          box-sizing: border-box;
+          width: 158px;
+          height: 32px;
+          line-height: 32px;
+          border: 1px solid #fff;
+          border-radius: 32px;
+          color: #333;
+          font-size: 12px;
+          padding-left: 20px;
+          padding-right: 5px;
+        }
+      }
+    }
   }
   .top-sub {
     width: 100%;
     background: #c20c0c;
+  }
+  .subLine {
+    height: 5px;
   }
   .subnav {
     width: 1100px;

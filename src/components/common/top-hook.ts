@@ -3,9 +3,9 @@ import { reactive, ref } from 'vue'
 
 export default () => {
     type IArrayInfo = {
-        name: string, path: string
+        name: string, path: string, [propName: string]: any
     }
-    type IdataInfo = {
+    interface IdataInfo {
         listIndex: number,
         subListIndex: number,
         topList: IArrayInfo[],
@@ -18,7 +18,7 @@ export default () => {
         subListIndex: 0,
         topList: [{
             name: '发现音乐',
-            path: '/#'
+            path: '/#',
         },
         {
             name: '我的音乐',
@@ -34,6 +34,10 @@ export default () => {
         },
         {
             name: '音乐人',
+            path: '/#'
+        },
+        {
+            name: '云推歌',
             path: '/#'
         },
         {
